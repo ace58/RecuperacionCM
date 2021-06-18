@@ -8,9 +8,8 @@
     -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- Dando permisos para acceder a la camara-->
-    <uses-permission android:name="android.permission.CAMERA"  ></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Dando permisos para acceder a la camara -->
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +18,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MapaEstaciones">
-        <activity android:name=".Activity_QR"></activity>
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity_QR" />
         <activity android:name=".Activity_Confirmar_Reserva" />
         <activity android:name=".Activity_Acciones_Reservas_BD" />
         <activity android:name=".Activity_Ver_Reservas" />
@@ -47,11 +53,6 @@
             android:name=".Mapa_con_las_oficinas"
             android:label="Map" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
