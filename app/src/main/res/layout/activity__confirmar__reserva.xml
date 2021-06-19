@@ -66,7 +66,7 @@
         android:text="@string/real_precio"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toEndOf="@+id/tv_confPrecio"
         app:layout_constraintTop_toBottomOf="@+id/matricula_conf" />
 
@@ -114,7 +114,7 @@
         android:text="@string/fecha_devolucion_resumen"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toEndOf="@+id/tv_confFechaFin"
         app:layout_constraintTop_toBottomOf="@+id/fechaInicio_conf" />
 
@@ -138,7 +138,7 @@
         android:text="@string/btn_lugar_recogida"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toEndOf="@+id/tv_confLugar"
         app:layout_constraintTop_toBottomOf="@+id/email_conf" />
 
@@ -150,7 +150,7 @@
         android:text="@string/et_vehiculoSeleccionado"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.212"
         app:layout_constraintStart_toEndOf="@+id/tv_confMatricula"
         app:layout_constraintTop_toBottomOf="@+id/fechaFin_conf" />
 
@@ -162,7 +162,7 @@
         android:text="@string/etEmail"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toEndOf="@+id/tv_confEmail"
         app:layout_constraintTop_toBottomOf="@+id/dni_conf" />
 

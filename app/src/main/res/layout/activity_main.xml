@@ -7,96 +7,6 @@
     android:background="@color/black"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="376dp"
-        android:layout_height="582dp"
-        android:layout_marginTop="24dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_credenciales">
-
-        <Button
-            android:id="@+id/btnReservaVehiculo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/neutrons"
-            android:hint="@string/btnReservaVehiculo"
-            android:onClick="Actividad_Reserva_adelante"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            app:backgroundTint="@color/yellow" />
-
-
-        <Button
-            android:id="@+id/btnBDOficinas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/neutrons"
-            android:hint="@string/btn_scanerQR"
-            android:onClick="Actividad_QR"
-            android:textColorHint="@color/black"
-            app:backgroundTint="@color/yellow" />
-
-        <Button
-            android:id="@+id/btn_reservas"
-            android:layout_width="match_parent"
-
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/neutrons"
-            android:hint="@string/btn_reservas"
-            android:onClick="Actividad_Ver_Reservas"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            app:backgroundTint="@color/yellow" />
-
-        <Button
-            android:id="@+id/btn_prueba_login3"
-            android:fontFamily="@font/neutrons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/btn_prueba_login3"
-            android:onClick="Cerrar_Sesion"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            app:backgroundTint="@color/yellow" />
-        <Button
-            android:id="@+id/btn_acciones_bd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/btn_acciones_bd"
-            android:onClick="Actividad_Acciones_BD"
-            android:visibility="invisible"
-            app:backgroundTint="@color/yellow" />
-
-        <Button
-            android:id="@+id/btn_ver_veh"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/neutrons"
-            android:hint="@string/btn_ver_veh"
-            android:onClick="Actividad_Ver_Vehiculos"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:visibility="invisible"
-            app:backgroundTint="@color/yellow" />
-
-        <Button
-            android:id="@+id/btn_ver_ofi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/neutrons"
-            android:hint="@string/btn_ver_ofi"
-            android:onClick="Actividad_Ver_Oficinas"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:visibility="invisible"
-            app:backgroundTint="@color/yellow" />
-
-    </LinearLayout>
-
     <TextView
         android:id="@+id/tv_credenciales"
 
@@ -109,4 +19,110 @@
         android:textColor="@color/yellow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:layout_width="371dp"
+        android:layout_height="473dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.403">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btnReservaVehiculo"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/neutrons"
+                android:hint="@string/btnReservaVehiculo"
+                android:onClick="Actividad_Reserva_adelante"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:backgroundTint="@color/yellow" />
+
+
+            <Button
+                android:id="@+id/btnBDOficinas"
+                android:layout_width="151dp"
+                android:layout_height="136dp"
+                android:fontFamily="@font/neutrons"
+                android:hint="@string/btn_scanerQR"
+                android:onClick="Actividad_QR"
+                android:textColorHint="@color/black"
+                app:backgroundTint="@color/yellow" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="140dp">
+
+            <Button
+                android:id="@+id/btn_reservas"
+                android:layout_width="176dp"
+
+                android:layout_height="139dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/neutrons"
+                android:hint="@string/btn_reservas"
+                android:onClick="Actividad_Ver_Reservas"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:backgroundTint="@color/yellow" />
+
+            <Button
+                android:id="@+id/btn_prueba_login3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/neutrons"
+                android:hint="@string/btn_prueba_login3"
+                android:onClick="Cerrar_Sesion"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:backgroundTint="@color/yellow" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/car" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="?attr/actionModeSelectAllDrawable" />
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="84dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_pass" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
