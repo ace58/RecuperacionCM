@@ -102,27 +102,39 @@
             android:layout_width="73dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@drawable/car" />
+            android:backgroundTint="#000000"
+            android:onClick="Actividad_Reserva_adelante"
+            android:tint="@color/yellow"
+            app:srcCompat="@drawable/ic_baseline_directions_car_24" />
 
         <ImageButton
             android:id="@+id/imageButton4"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="?attr/actionModeSelectAllDrawable" />
+            android:backgroundTint="#45000000"
+            android:onClick="Actividad_QR"
+            android:tint="@color/yellow"
+            app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
 
         <ImageButton
             android:id="@+id/imageButton5"
             android:layout_width="84dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+            android:backgroundTint="#000000"
+            android:onClick="Actividad_Ver_Reservas"
+            android:tint="@color/yellow"
+            app:srcCompat="@drawable/ic_baseline_book_online_24" />
 
         <ImageButton
             android:id="@+id/imageButton6"
             android:layout_width="86dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:backgroundTint="#000000"
+            android:onClick="Cerrar_Sesion"
+            android:tint="#EC0000"
             app:srcCompat="@drawable/ic_pass" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.mapaestaciones;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -160,6 +161,46 @@ public class Activity_Reservar_Vehiculos extends AppCompatActivity implements Vi
     public void volver_main(View view){
         finish();
     }
+    public void Actividad_Reserva_adelante (View view){
+        Intent reserva_adelante = new Intent(getApplicationContext(), Activity_Reservar_Vehiculos.class);
+        startActivity(reserva_adelante);
+    }
+    public void Actividad_Ver_Reservas (View view) {
+        Intent ver_oficinas_adelante = new Intent(getApplicationContext(), Activity_Ver_Reservas.class);
+        startActivity(ver_oficinas_adelante);
+    }
+    public void Actividad_QR (View view) {
+        Intent escanerQR = new Intent(getApplicationContext(), Activity_QR.class);
+        startActivity(escanerQR);
+    }
 
+    public void Cerrar_Sesion (View view) {
+        saveValuePreference(getApplicationContext(), true);
+        reiniciarActivity(this);
+    }
+    public static void reiniciarActivity(Activity actividad){
+        Intent intent=new Intent();
+        intent.setClass(actividad, actividad.getClass());
+        actividad.startActivity(intent);
+        actividad.finish();
+    }
+
+    public static void saveValuePreference(Context context, Boolean b) {
+        SharedPreferences sesion = context.getSharedPreferences("sesion", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor;
+        editor = sesion.edit();
+        editor.putBoolean("logueado", b);
+        editor.commit();
+    }
+
+    public boolean getValuePreference(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences("sesion", MODE_PRIVATE);
+        return  preferences.getBoolean("logueado", true);
+    }
+    public void menu_principal(View view){
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
+    }
 
 }
