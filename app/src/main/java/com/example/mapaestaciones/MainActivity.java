@@ -1,27 +1,37 @@
 package com.example.mapaestaciones;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.view.Gravity;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView tv_credenciales;
+    public static final long DURATION_TRANSITION=1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //poer el icono en action bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+
 
         tv_credenciales=(TextView)findViewById(R.id.tv_credenciales);
 
@@ -36,10 +46,55 @@ public class MainActivity extends AppCompatActivity {
         tv_credenciales.setText(preferences.getString("usuario", "AAAAAA"));
     }
 
-    /*public void Actividad_Maps (View view){
-        Intent mapas_adelante = new Intent(getApplicationContext(), Mapa_con_las_oficinas.class);
-        startActivity(mapas_adelante);
-    }*/
+    private Transition transition;
+
+    public void onExplodeClicked(View view){
+        transition = new Explode();
+        iniciarActividadMisReservas();
+    }
+    public void onSlideClicked(View view){
+        transition = new Slide(Gravity.START);
+        iniciarActividadEscaner();
+    }
+    public void onFadeClicked(View view){
+        transition = new Fade(Fade.OUT);
+        iniciarActividadReservaVehiculos();
+    }
+    public void iniciarActividadReservaVehiculos(){
+        transition.setDuration(DURATION_TRANSITION);
+        transition.setInterpolator(new DecelerateInterpolator());
+        getWindow().setExitTransition(transition);
+        Intent intent = new Intent(this,Activity_Reservar_Vehiculos.class);
+        startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+
+    }
+
+    public void iniciarActividadEscaner(){
+        transition.setDuration(DURATION_TRANSITION);
+        transition.setInterpolator(new DecelerateInterpolator());
+        getWindow().setExitTransition(transition);
+        Intent intent = new Intent(this,Activity_QR.class);
+        startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+
+    }
+
+    public void iniciarActividadMisReservas(){
+        transition.setDuration(DURATION_TRANSITION);
+        transition.setInterpolator(new DecelerateInterpolator());
+        getWindow().setExitTransition(transition);
+        Intent intent = new Intent(this,Activity_Ver_Reservas.class);
+        startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+
+    }
+
+
+
+
+
+
+
+
+
     public void Actividad_Reserva_adelante (View view){
         Intent reserva_adelante = new Intent(getApplicationContext(), Activity_Reservar_Vehiculos.class);
         startActivity(reserva_adelante);
@@ -70,13 +125,17 @@ public class MainActivity extends AppCompatActivity {
         Intent ver_oficinas_adelante = new Intent(getApplicationContext(), Activity_Ver_Reservas.class);
         startActivity(ver_oficinas_adelante);
     }
+    public void Actividad_SearchActivity (View view) {
+        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+        startActivity(intent);
+    }
 
     public void Actividad_Prueba_Login (View view) {
         Intent login = new Intent(getApplicationContext(), Activity_Login.class);
         startActivity(login);
     }
 
-        public void Actividad_QR (View view) {
+    public void Actividad_QR (View view) {
         Intent escanerQR = new Intent(getApplicationContext(), Activity_QR.class);
         startActivity(escanerQR);
     }
@@ -91,6 +150,11 @@ public class MainActivity extends AppCompatActivity {
         intent.setClass(actividad, actividad.getClass());
         actividad.startActivity(intent);
         actividad.finish();
+    }
+
+    public void Actividad_MiPerfil(View view) {
+        Intent miperfil = new Intent(getApplicationContext(), MiPerfil.class);
+        startActivity(miperfil);
     }
 
     public static void saveValuePreference(Context context, Boolean b) {
