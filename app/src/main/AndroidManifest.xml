@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MapaEstaciones">
-        <activity android:name=".MiPerfil"></activity>
+        <activity android:name=".Activity_MiPerfil"></activity>
         <activity android:name=".SearchActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>

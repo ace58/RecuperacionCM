@@ -150,6 +150,10 @@
     <string name="vehiculo_seleccionado">Vehiculo Seleccionado</string>
 
     <string name="btn_scanerQR">Escaner QR</string>
+    <string name="btn_miperfil">Mi perfil</string>
+    <string name="btn_ver_vehiculos">Ver vehiculos </string>
+
+    <string name="btn_guardar">Guardar </string>
 
     /*Actividad ver reservas*/
     <string name="btn_eliminar_res">Eliminar Reserva</string>
@@ -162,6 +166,6 @@
     <string name="et_inserte_codigo">Inserte el código de la reserva que desea eliminar</string>
     <string name="txt_nombre">Nombre:</string>
     <string name="btn_volver_main">Volver</string>
-
+    <string name="btn_baja">Eliminar cuenta</string>
 
 </resources>

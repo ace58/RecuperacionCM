@@ -151,8 +151,11 @@
     <string name="vehiculo_seleccionado">Selected vehicle</string>
 
     <string name="btn_scanerQR">Scam QR</string>
+    <string name="btn_miperfil">My profile</string>
+    <string name="btn_ver_vehiculos">Ver vehiculos </string>
 
-
+    <string name="btn_guardar">Save </string>
+    <string name="btn_baja">Delete account</string>
     /*Actividad ver reservas*/
     <string name="btn_eliminar_res">Delete reserve</string>
     <string name="txt_codigo">Code</string>

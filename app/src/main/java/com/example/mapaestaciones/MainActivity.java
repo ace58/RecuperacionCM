@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Actividad_MiPerfil(View view) {
-        Intent miperfil = new Intent(getApplicationContext(), MiPerfil.class);
+        Intent miperfil = new Intent(getApplicationContext(), Activity_MiPerfil.class);
         startActivity(miperfil);
     }
 
