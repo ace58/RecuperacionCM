@@ -7,13 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class Activity_Acciones_BD extends AppCompatActivity {
 
@@ -30,7 +25,7 @@ public class Activity_Acciones_BD extends AppCompatActivity {
 
         et_matricula = (EditText)findViewById(R.id.int_matricula);
         et_categoria = (EditText)findViewById(R.id.txt_categoria);
-        et_marca = (EditText)findViewById(R.id.txt_marca);
+        et_marca = (EditText)findViewById(R.id.txt_oficina);
         et_modelo = (EditText)findViewById(R.id.txt_modelo);
         et_descripcion = (EditText)findViewById(R.id.txt_descripcion);
         et_precio = (EditText)findViewById(R.id.real_precio);

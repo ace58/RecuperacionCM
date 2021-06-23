@@ -41,7 +41,7 @@
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/neutrons"
                 android:hint="@string/btnReservaVehiculo"
-                android:onClick="Actividad_Reserva_adelante"
+                android:onClick="onFadeClicked"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 app:backgroundTint="@color/yellow" />
@@ -53,7 +53,7 @@
                 android:layout_height="136dp"
                 android:fontFamily="@font/neutrons"
                 android:hint="@string/btn_scanerQR"
-                android:onClick="Actividad_QR"
+                android:onClick="onSlideClicked"
                 android:textColorHint="@color/black"
                 app:backgroundTint="@color/yellow" />
         </TableRow>
@@ -72,7 +72,7 @@
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/neutrons"
                 android:hint="@string/btn_ver_vehiculos"
-                android:onClick="Actividad_SearchActivity"
+                android:onClick="Actividad_Ver_Vehiculos"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 app:backgroundTint="@color/yellow" />
@@ -102,7 +102,7 @@
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/neutrons"
                 android:hint="@string/btn_reservas"
-                android:onClick="Actividad_Ver_Reservas"
+                android:onClick="onExplodeClicked"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 app:backgroundTint="@color/yellow" />

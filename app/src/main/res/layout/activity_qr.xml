@@ -59,7 +59,7 @@
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#45000000"
+            android:backgroundTint="#000000"
             android:onClick="Actividad_QR"
             android:tint="@color/yellow"
             app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />

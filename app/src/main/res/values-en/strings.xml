@@ -156,6 +156,8 @@
 
     <string name="btn_guardar">Save </string>
     <string name="btn_baja">Delete account</string>
+    <string name="txt_reserva">Booking</string>
+
     /*Actividad ver reservas*/
     <string name="btn_eliminar_res">Delete reserve</string>
     <string name="txt_codigo">Code</string>

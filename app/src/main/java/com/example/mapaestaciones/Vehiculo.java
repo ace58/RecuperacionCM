@@ -60,4 +60,7 @@ public class Vehiculo {
     }
 
     public String toString(){ return marca+" - "+modelo; }
+
+    public String toString2() {return marca;
+    }
 }

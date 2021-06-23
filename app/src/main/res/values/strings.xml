@@ -151,7 +151,7 @@
 
     <string name="btn_scanerQR">Escaner QR</string>
     <string name="btn_miperfil">Mi perfil</string>
-    <string name="btn_ver_vehiculos">Ver vehiculos </string>
+    <string name="btn_ver_vehiculos">Vehiculos disponibles </string>
 
     <string name="btn_guardar">Guardar </string>
 
@@ -162,10 +162,10 @@
     <string name="txt_fechaFin">fecha fin</string>
     <string name="txt_matricula2">matricula</string>
     <string name="txt_oficina">oficina</string>
-    <string name="txt_dni">dini</string>
+    <string name="txt_dni">dni</string>
     <string name="et_inserte_codigo">Inserte el código de la reserva que desea eliminar</string>
     <string name="txt_nombre">Nombre:</string>
     <string name="btn_volver_main">Volver</string>
     <string name="btn_baja">Eliminar cuenta</string>
-
+    <string name="txt_reserva">RESERVA</string>
 </resources>

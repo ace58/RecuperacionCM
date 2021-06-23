@@ -23,6 +23,7 @@ import java.util.ArrayList;
 public class Activity_Ver_Reservas extends AppCompatActivity {
     TextView r_nombre, r_apellidos, r_dni, r_telefono, r_email;
     EditText r_codigo;
+    private ReservaAdapter vAdapter;
     private listAdapter resevaAdapter;
     private ListView lv1;
 
@@ -57,7 +58,7 @@ public class Activity_Ver_Reservas extends AppCompatActivity {
         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
         String dni = r_dni.getText().toString();
-        ArrayList<String> lista = new ArrayList<>();
+        ArrayList<Reserva> lista = new ArrayList<>();
         lista.clear();
 
         if (!dni.isEmpty()) {
@@ -67,11 +68,11 @@ public class Activity_Ver_Reservas extends AppCompatActivity {
                 do {
                     Reserva reserva = new Reserva(fila.getInt(0), fila.getString(1), fila.getString(2),
                             fila.getString(3), fila.getString(4), fila.getString(5));
-                    lista.add(reserva.toString());
+                    lista.add(reserva);
                 } while (fila.moveToNext());
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_verreservas, lista);
+                /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_verreservas, lista);
                 lv1.setAdapter(adapter);
-
+*/
 
             } else {
                 Toast.makeText(this, "No hay ninguna reserva", Toast.LENGTH_SHORT).show();
@@ -80,6 +81,12 @@ public class Activity_Ver_Reservas extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Algo salió mal", Toast.LENGTH_LONG).show();
         }
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_reservas);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        vAdapter = new ReservaAdapter(lista);
+        recyclerView.setAdapter(vAdapter);
     }
 
     public void EliminarReserva(View view) {
@@ -115,31 +122,6 @@ public class Activity_Ver_Reservas extends AppCompatActivity {
         Intent escanerQR = new Intent(getApplicationContext(), Activity_QR.class);
         startActivity(escanerQR);
     }
-
-    public void Cerrar_Sesion (View view) {
-        saveValuePreference(getApplicationContext(), true);
-        reiniciarActivity(this);
-    }
-    public static void reiniciarActivity(Activity actividad){
-        Intent intent=new Intent();
-        intent.setClass(actividad, actividad.getClass());
-        actividad.startActivity(intent);
-        actividad.finish();
-    }
-
-    public static void saveValuePreference(Context context, Boolean b) {
-        SharedPreferences sesion = context.getSharedPreferences("sesion", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor;
-        editor = sesion.edit();
-        editor.putBoolean("logueado", b);
-        editor.commit();
-    }
-
-    public boolean getValuePreference(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences("sesion", MODE_PRIVATE);
-        return  preferences.getBoolean("logueado", true);
-    }
-
     public void menu_principal(View view){
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);

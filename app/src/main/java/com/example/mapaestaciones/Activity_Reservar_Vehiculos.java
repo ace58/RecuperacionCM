@@ -174,29 +174,6 @@ public class Activity_Reservar_Vehiculos extends AppCompatActivity implements Vi
         startActivity(escanerQR);
     }
 
-    public void Cerrar_Sesion (View view) {
-        saveValuePreference(getApplicationContext(), true);
-        reiniciarActivity(this);
-    }
-    public static void reiniciarActivity(Activity actividad){
-        Intent intent=new Intent();
-        intent.setClass(actividad, actividad.getClass());
-        actividad.startActivity(intent);
-        actividad.finish();
-    }
-
-    public static void saveValuePreference(Context context, Boolean b) {
-        SharedPreferences sesion = context.getSharedPreferences("sesion", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor;
-        editor = sesion.edit();
-        editor.putBoolean("logueado", b);
-        editor.commit();
-    }
-
-    public boolean getValuePreference(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences("sesion", MODE_PRIVATE);
-        return  preferences.getBoolean("logueado", true);
-    }
     public void menu_principal(View view){
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
