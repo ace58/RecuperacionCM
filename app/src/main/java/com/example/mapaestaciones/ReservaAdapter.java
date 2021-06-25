@@ -2,95 +2,92 @@ package com.example.mapaestaciones;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Filter;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
-import java.util.Collection;
 
-public class ReservaAdapter extends RecyclerView.Adapter<ReservaAdapter.ViewHolder> {
 
-    private ArrayList<Reserva> mDataset;
+public class ReservaAdapter extends BaseAdapter {
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    Context context;
+    private final String [] codigos;
+    private final String [] lugares;
 
-        Context context;
-        public TextView v_codigo;
-        public TextView v_oficina;
-        public TextView v_fechaInicio;
-        public ViewHolder(View v) {
-            super(v);
-            context = v.getContext();
-            v_codigo = (TextView) v.findViewById(R.id.v_codigo);
-            v_oficina = (TextView) v.findViewById(R.id.v_oficina);
-            v_fechaInicio = (TextView) v.findViewById(R.id.v_fechaInicio);
-        }
+    private final String [] finicios;
+    private final String [] ffins;
 
-    }
-
-    public ReservaAdapter(ArrayList<Reserva> dataSet) {
-        mDataset = dataSet;
+    public ReservaAdapter(Context context, String [] codigos, String [] lugares, String [] finicios, String [] ffins){
+        //super(context, R.layout.single_list_app_item, utilsArrayList);
+        this.context = context;
+        this.codigos = codigos;
+        this.lugares = lugares;
+        this.finicios = finicios;
+        this.ffins = ffins;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.item_reserva, viewGroup, false);
-
-        return new ViewHolder(v);
+    public int getCount() {
+        return codigos.length;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        viewHolder.v_codigo.setText(mDataset.get(position).getCodigo());
-        viewHolder.v_oficina.setText(mDataset.get(position).getNombreOficina());
-        viewHolder.v_fechaInicio.setText(mDataset.get(position).getFechaInicio());
+    public Object getItem(int i) {
+        return i;
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
-    public int getItemCount() {
-        return mDataset.size();
+    public long getItemId(int i) {
+        return i;
     }
-    public Filter getFilter() {
-        return filter;
-    }
-    Filter filter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            ArrayList<Reserva> arrayFiltrado =new ArrayList<Reserva>();
-            if(charSequence.toString().isEmpty()){
-                arrayFiltrado.addAll(mDataset);
-            }else{
-                for(Reserva v :mDataset){
-                    if(v.getNombreOficina().toLowerCase().contains(charSequence.toString().toLowerCase())){
-                        arrayFiltrado.add(v);
-                    }
-                }
-            }
-            FilterResults filterResults= new FilterResults();
-            filterResults.values=arrayFiltrado;
-            return filterResults;
+
+    @Override
+    public View getView(int position,  View convertView, ViewGroup parent) {
+
+
+        ViewHolder viewHolder;
+
+        final View result;
+
+        if (convertView == null) {
+
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.list_item_reservas, parent, false);
+            viewHolder.txtCodigo = (TextView) convertView.findViewById(R.id.txt_codigo2);
+            viewHolder.txtLugar = (TextView) convertView.findViewById(R.id.txt_lugar);
+            viewHolder.txtFinicio = (TextView) convertView.findViewById(R.id.txt_finicio);
+            viewHolder.txtFfin = (TextView) convertView.findViewById(R.id.txt_ffin);
+
+            result=convertView;
+
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+            result=convertView;
         }
 
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            mDataset.clear();
-            mDataset.addAll((Collection<? extends Reserva>) results.values);
-            notifyDataSetChanged();
-        }
-    };
+        viewHolder.txtCodigo.setText(codigos[position]);
+        viewHolder.txtLugar.setText(lugares[position]);
+        viewHolder.txtFinicio.setText(finicios[position]);
+        viewHolder.txtFfin.setText(ffins[position]);
 
+        return convertView;
+    }
+
+    private static class ViewHolder {
+
+        TextView txtCodigo;
+        TextView txtLugar;
+        TextView txtFinicio;
+        TextView txtFfin;
+
+    }
 
 }
-
 

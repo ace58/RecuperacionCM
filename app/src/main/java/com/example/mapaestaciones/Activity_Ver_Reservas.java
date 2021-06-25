@@ -23,9 +23,10 @@ import java.util.ArrayList;
 public class Activity_Ver_Reservas extends AppCompatActivity {
     TextView r_nombre, r_apellidos, r_dni, r_telefono, r_email;
     EditText r_codigo;
+
     private ReservaAdapter vAdapter;
     private listAdapter resevaAdapter;
-    private ListView lv1;
+    private ListView lv3;
 
 
     @Override
@@ -42,7 +43,7 @@ public class Activity_Ver_Reservas extends AppCompatActivity {
         r_telefono = findViewById(R.id.tv_telefono);
         r_email = findViewById(R.id.tv_email);
 
-        lv1 = (ListView) findViewById(R.id.lv1);
+        lv3=(ListView)findViewById(R.id.lv3);
         r_codigo = (EditText) findViewById(R.id.et_inserte_codigo);
 
         SharedPreferences preferences = getSharedPreferences("credenciales", Context.MODE_PRIVATE);
@@ -58,9 +59,27 @@ public class Activity_Ver_Reservas extends AppCompatActivity {
         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
         String dni = r_dni.getText().toString();
-        ArrayList<Reserva> lista = new ArrayList<>();
+        ArrayList<String> lista = new ArrayList<>();
+        ArrayList<Reserva> lista2 = new ArrayList<>();
         lista.clear();
-
+        Cursor fila2 = BaseDeDatos.rawQuery
+                ("select * from reservas where dni ='" + dni + "'", null);
+        if (fila2.moveToFirst()) {
+            do {
+                Reserva reserva = new Reserva(fila2.getInt(0), fila2.getString(1), fila2.getString(2),
+                        fila2.getString(3), fila2.getString(4), fila2.getString(5));
+                lista2.add(reserva);
+            } while (fila2.moveToNext());
+        } else {
+            Toast.makeText(this, "No hay ninguna reserva", Toast.LENGTH_SHORT).show();
+            BaseDeDatos.close();
+        }
+        int tamaño = lista2.size();
+        String[] codigos = new String[tamaño];
+        String[] lugares = new String[tamaño];
+        String[] finicios = new String[tamaño];
+        String[] ffins = new String[tamaño];
+        int contador_string = 0;
         if (!dni.isEmpty()) {
             Cursor fila = BaseDeDatos.rawQuery
                     ("select * from reservas where dni ='" + dni + "'", null);
@@ -68,7 +87,12 @@ public class Activity_Ver_Reservas extends AppCompatActivity {
                 do {
                     Reserva reserva = new Reserva(fila.getInt(0), fila.getString(1), fila.getString(2),
                             fila.getString(3), fila.getString(4), fila.getString(5));
-                    lista.add(reserva);
+                    lista.add(reserva.toString2());
+                    codigos[contador_string] = reserva.getCodigo().toString();
+                    lugares[contador_string] = reserva.getNombreOficina();
+                    finicios[contador_string] = reserva.getFechaInicio();
+                    ffins[contador_string] = reserva.getFechaFin();
+                    contador_string++;
                 } while (fila.moveToNext());
                 /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_verreservas, lista);
                 lv1.setAdapter(adapter);
@@ -81,12 +105,8 @@ public class Activity_Ver_Reservas extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Algo salió mal", Toast.LENGTH_LONG).show();
         }
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_reservas);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        vAdapter = new ReservaAdapter(lista);
-        recyclerView.setAdapter(vAdapter);
+        ReservaAdapter adapter = new ReservaAdapter(this,codigos,lugares,finicios,ffins);
+        lv3.setAdapter(adapter);
     }
 
     public void EliminarReserva(View view) {

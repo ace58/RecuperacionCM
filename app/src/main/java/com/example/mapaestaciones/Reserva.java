@@ -68,4 +68,7 @@ public class Reserva {
     public void setDni(String dni) {
         this.dni = dni;
     }
+
+    public String toString2() {return codigo +" - "+ nombreOficina +" - "+ fechaInicio+" - "+ fechaFin;
+    }
 }
